@@ -1,14 +1,5 @@
 <?php
 
-/**
- * A PHP package for working w/ the CLI.
- *
- * @package    travis/cli
- * @author     Scott Travis <scott@swt83.com>
- * @link       http://github.com/swt83/php-cli
- * @license    MIT License
- */
-
 namespace Travis;
 
 class CLI
