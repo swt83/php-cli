@@ -1,6 +1,7 @@
 {
-    "name": "vendor/package",
-    "description": "",
+    "name": "travis/cli",
+    "description": "A PHP library for sending output to the CLI.",
+    "homepage": "https://github.com/swt83/php-cli",
     "authors": [
         {
             "name": "Scott Travis",
@@ -9,15 +10,11 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "illuminate/support": "4.0.*"
     },
     "autoload": {
         "classmap": [
-            "src/migrations"
-        ],
-        "psr-0": {
-            "Vendor\\Package\\": "src/"
-        }
+            "src/cli.php"
+        ]
     },
     "minimum-stability": "dev"
 }
