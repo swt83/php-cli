@@ -88,7 +88,7 @@ class CLI
         }
 
         // output to terminal
-        if (Request::cli()) fwrite(STDOUT, $string);
+        fwrite(STDOUT, $string);
     }
 
     /**
@@ -147,7 +147,7 @@ class CLI
     public static function error($string)
     {
         // error output w/ red color
-        if (Request::cli()) fwrite(STDERR, "\033[1;31m".$string."\033[0m"."\n");
+        fwrite(STDERR, "\033[1;31m".$string."\033[0m"."\n");
     }
 
     /**
@@ -171,7 +171,7 @@ class CLI
     public static function beep($loops = 1)
     {
         // repeating beep
-        if (Request::cli()) echo str_repeat("\x07", $loops);
+        echo str_repeat("\x07", $loops);
     }
 
     /**
