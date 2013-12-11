@@ -1,6 +1,24 @@
 # CLI
 
-A simple class for sending output to the Command Line Interface.
+A PHP library for sending output to the Command Line Interface.
+
+## Install
+
+Some methods are designed for use in Laravel.
+
+### Provider
+
+Register your service provider in ``app/config/app.php``:
+
+```php
+'Travis\CLI\Provider'
+```
+
+You may also wish to add an alias to remove the namespace:
+
+```php
+'CLI' => 'Travis\CLI'
+```
 
 ## Methods
 
@@ -18,4 +36,4 @@ When using ``CLI::spin('Importing file XYZ...');`` or ``CLI::progress($count, $t
 
 ## Limitations
 
-* My understanding is this class won't work at all in Windows.
+- My understanding is this class won't work at all in Windows.
