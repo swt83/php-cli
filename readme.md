@@ -1,24 +1,10 @@
 # CLI
 
-A PHP library for sending output to the Command Line Interface.
+A PHP library for sending output to the command line interface.
 
 ## Install
 
-Some methods are designed for use in Laravel.
-
-### Provider
-
-Register your service provider in ``app/config/app.php``:
-
-```php
-'Travis\CLI\Provider'
-```
-
-You may also wish to add an alias to remove the namespace:
-
-```php
-'CLI' => 'Travis\CLI'
-```
+Normall install via Composer.
 
 ## Methods
 
