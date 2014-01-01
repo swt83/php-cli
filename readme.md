@@ -4,7 +4,7 @@ A PHP library for sending output to the command line interface.
 
 ## Install
 
-Normall install via Composer.
+Normal install via Composer.
 
 ## Methods
 
