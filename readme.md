@@ -27,10 +27,13 @@ CLI::countdown($seconds); // print a countdown, on the same line
 $string = CLI::colorize($string, $color); // format a string to have a color
 CLI::write($string);
 $string = CLI::block($string, 20); // format content to be right aligned in block
+$string = CLI::block($string, 20, 'left'); // left aligned in block
+$string = CLI::block($string, 20, 'left', true); // left aligned in block w/ dots
 CLI::write($string);
 
 // inputs
 $var = CLI::input($question); // get input from the user
 $vars = CLI::inputs($array_of_questions); // get array of inputs from the user
+$vars = CLI::inputs($array_of_questions, true); // get array of inputs w/ block alignments
 $var = CLI::confirm($question); // get boolean response
 ```

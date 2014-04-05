@@ -221,9 +221,10 @@ class CLI {
      *
      * @param   string  $str
      * @param   int     $len
+     * @param   boolean $dots
      * @return  void
      */
-    public static function block($str, $len)
+    public static function block($str, $len, $align = 'right', $dots = false)
     {
         $size = strlen($str);
         if ($len < $size)
@@ -236,9 +237,18 @@ class CLI {
         $new = '';
         for ($i = 1; $i <= $remainder; $i++)
         {
-            $new .= ' ';
+            $new .= $dots ? '.' : ' ';
         }
-        $new .= $str;
+
+        if ($align === 'right')
+        {
+            $new .= $dots ? '. '.$str : $str;
+        }
+        else
+        {
+            $old = $new;
+            $new = $dots ? $str.' .'.$old : $str.$old;
+        }
 
         return $new;
     }
@@ -283,7 +293,7 @@ class CLI {
         $input = fgets(STDIN);
 
         // write newline
-        static::newline();
+        #static::newline(); // not necessary
 
         // return
         return trim($input);
@@ -293,10 +303,30 @@ class CLI {
      * Get multiple inputs from the user.
      *
      * @param   array   $questions
+     * @param   boolean $block_align
      * @return  array
      */
-    public static function inputs($questions)
+    public static function inputs($questions, $block_align = false)
     {
+        // if block align...
+        if ($block_align)
+        {
+            $longest = 0;
+            foreach ($questions as $question)
+            {
+                $len = strlen($question);
+                if ($len > $longest)
+                {
+                    $longest = $len;
+                }
+            }
+
+            foreach ($questions as $key => $question)
+            {
+                $questions[$key] = static::block($question, $longest, 'left', true);
+            }
+        }
+
         $input = array();
         foreach ($questions as $key => $question)
         {
