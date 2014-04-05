@@ -296,9 +296,6 @@ class CLI {
         // get input
         $input = fgets(STDIN);
 
-        // write newline
-        #static::newline(); // not necessary
-
         // return
         return trim($input);
     }
@@ -314,9 +311,6 @@ class CLI {
     {
         // get input
         $input = static::input($question.' [Y/N]', $block);
-
-        // default
-        $result = false;
 
         // return
         return in_array($input, array('Y', 'Yes', 'y', 'yes', '1'));
