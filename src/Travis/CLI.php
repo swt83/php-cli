@@ -282,11 +282,15 @@ class CLI {
      * Get input from the user.
      *
      * @param   string  $question
+     * @param   int     $block
      * @return  string
      */
-    public static function input($question)
+    public static function input($question, $block = null)
     {
-        // write question
+        // if block...
+        if ($block) $question = static::block($question, $block, 'left', true);
+
+        // print question
         static::spin(static::colorize($question.': ', 'white'));
 
         // get input
@@ -300,51 +304,16 @@ class CLI {
     }
 
     /**
-     * Get multiple inputs from the user.
-     *
-     * @param   array   $questions
-     * @param   boolean $block_align
-     * @return  array
-     */
-    public static function inputs($questions, $block_align = false)
-    {
-        // if block align...
-        if ($block_align)
-        {
-            $longest = 0;
-            foreach ($questions as $question)
-            {
-                $len = strlen($question);
-                if ($len > $longest)
-                {
-                    $longest = $len;
-                }
-            }
-
-            foreach ($questions as $key => $question)
-            {
-                $questions[$key] = static::block($question, $longest, 'left', true);
-            }
-        }
-
-        $input = array();
-        foreach ($questions as $key => $question)
-        {
-            $input[$key] = static::input($question);
-        }
-        return $input;
-    }
-
-    /**
      * Get confirmation from the user.
      *
      * @param   string  $question
+     * @param   int     $block
      * @return  boolean
      */
-    public static function confirm($question)
+    public static function confirm($question, $block = null)
     {
         // get input
-        $input = static::input($question.' [Y/N]');
+        $input = static::input($question.' [Y/N]', $block);
 
         // default
         $result = false;

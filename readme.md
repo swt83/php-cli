@@ -33,7 +33,6 @@ CLI::write($string);
 
 // inputs
 $var = CLI::input($question); // get input from the user
-$vars = CLI::inputs($array_of_questions); // get array of inputs from the user
-$vars = CLI::inputs($array_of_questions, true); // get array of inputs w/ block alignments
+$var = CLI::input($question, 50); // print question in block size w/ dots
 $var = CLI::confirm($question); // get boolean response
 ```
