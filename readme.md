@@ -1,25 +1,36 @@
 # CLI
 
-A PHP library for sending output to the command line interface.
+A PHP library for working with the command line interface.
 
 ## Install
 
 Normal install via Composer.
 
-## Methods
+## Usage
 
-* ``CLI::write($string);`` Print output.
-* ``CLI::spin($string);`` Print output on the same line.
-* ``CLI::progress($count, $total);`` Print percentage complete on the same line.
-* ``CLI::error($string);`` Print a red error.
-* ``CLI::beep($loops);`` Emit a beep a given number of times.
-* ``CLI::countdown($seconds);`` Print a countdown, on the same line.
-* ``CLI::newline($num);`` Print blank lines.
+```php
+use Travis\CLI;
 
-## "Spinning" and "Progress"
+// outputs
+CLI::write($string); // print output to shell
+CLI::spin($string); // print output on the same line
+CLI::newline($num); // print blank lines
+CLI::progress($count, $total); // print percentage complete, on the same line
+CLI::progress_complete(); // print final percentage and line return
+CLI::info($string); // print a green message
+CLI::error($string); // print a red message
+CLI::fatal($string); // print a red message and kill the script
+CLI::beep($loops); // emit a beep a number of times
+CLI::countdown($seconds); // print a countdown, on the same line
 
-When using ``CLI::spin('Importing file XYZ...');`` or ``CLI::progress($count, $total)``, you will be sending output to the same line of the terminal.  Just remember to add a final ``CLI::newline();`` or ``CLI::progress_complete();`` after your loop to give future output a clean line to work with.
+// formatting
+$string = CLI::colorize($string, $color); // format a string to have a color
+CLI::write($string);
+$string = CLI::block($string, 20); // format content to be right aligned in block
+CLI::write($string);
 
-## Limitations
-
-- My understanding is this class won't work at all in Windows.
+// inputs
+$var = CLI::input($question); // get input from the user
+$vars = CLI::inputs($array_of_questions); // get array of inputs from the user
+$var = CLI::confirm($question); // get boolean response
+```
