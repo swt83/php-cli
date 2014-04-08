@@ -291,7 +291,7 @@ class CLI {
         if ($block) $question = static::block($question, $block, 'left', true);
 
         // print question
-        static::spin(static::colorize($question.': ', 'white'));
+        static::spin($question.': ', 'white');
 
         // get input
         $input = fgets(STDIN);
