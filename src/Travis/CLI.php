@@ -2,8 +2,8 @@
 
 namespace Travis;
 
-class CLI {
-
+class CLI
+{
     /**
      * Color codes for text.
      *
@@ -86,21 +86,24 @@ class CLI {
     {
         // calculate
         $percentage = round((100 * $num / $total), 2);
-        $string = '| ';
+        $string = '[ ';
         $ticks = 49;
         $progress = round($ticks * $percentage / 100);
         for ($i = 0; $i <= $progress; $i++)
         {
-            $string .= '#';
+            $string .= '=';
         }
         for ($i = 0; $i <= $ticks - $progress; $i++)
         {
             $string .= ' ';
         }
-        $string .= '| '.number_format($percentage, 2).'%';
+        $string .= '] '.number_format($percentage, 2).'%';
 
         // write
         static::write($string, true);
+
+        // unset
+        unset($num, $total, $percentage, $string, $ticks, $progress, $i);
     }
 
     /**
@@ -325,5 +328,4 @@ class CLI {
     {
         return 'win' === strtolower(substr(php_uname("s"), 0, 3));
     }
-
 }
