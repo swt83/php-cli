@@ -133,6 +133,9 @@ class CLI
 
         // write
         static::write($string);
+
+        // unset
+        unset($string);
     }
 
     /**
@@ -148,6 +151,9 @@ class CLI
 
         // write
         static::write($string);
+
+        // unset
+        unset($string);
     }
 
     /**
@@ -220,6 +226,9 @@ class CLI
             // write blank
             static::write('');
         }
+
+        // unset
+        unset($num, $i);
     }
 
     /**
@@ -256,6 +265,7 @@ class CLI
             $new = $dots ? $str.' .'.$old : $str.$old;
         }
 
+        // return
         return $new;
     }
 
