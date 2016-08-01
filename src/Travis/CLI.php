@@ -62,6 +62,9 @@ class CLI
             // output to shell
             fwrite(STDOUT, $string);
         }
+
+        // unset
+        unset($string, $sameline);
     }
 
     /**
