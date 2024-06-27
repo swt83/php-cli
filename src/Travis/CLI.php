@@ -241,10 +241,17 @@ class CLI
      */
     public static function block($str, $len, $align = 'right', $dots = false)
     {
-        $size = strlen($str);
+        //"\033[1;31mHello\033[0m \033[1;32mWorld\033[0m! ✓";
+        // Remove color codes like "\033[1;31m"
+        $string_without_color = preg_replace('/\033\[\d+(?:;\d+)*m/', '', $str);
+
+        // Remove reset code "\033[0m"
+        $string_without_color = preg_replace('/\033\[0m/', '', $string_without_color);
+
+        $size = mb_strlen($string_without_color, 'UTF-8');
         if ($len < $size)
         {
-            return substr($str, 0, $len);
+            return substr($string_without_color, 0, $len);
         }
 
         $remainder = $len - $size;
